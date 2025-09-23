@@ -1,0 +1,47 @@
+{{- range $key, $svc := .Values.services }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $.Chart.Name }}-{{ $svc.name }}
+  namespace: {{ if $.Values.devMode }}dev{{ else }}{{ $svc.namespace }}{{ end }}
+spec:
+  replicas: {{ if $.Values.devMode }}1{{ else }}{{ $svc.replicas }}{{ end }}
+  selector:
+    matchLabels:
+      app: {{ $svc.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $svc.name }}
+    spec:
+      containers:
+        - name: {{ $svc.name }}
+          image: {{ $svc.image }}
+          imagePullPolicy: {{ if $.Values.devMode }}IfNotPresent{{ else }}Always{{ end }}
+          ports:
+            - containerPort: {{ $svc.targetPort }}
+          envFrom:
+            - secretRef:
+                name: {{ $svc.secretRef }}
+          {{- if $.Values.devMode }}
+          # Hot reload: mount local code directory
+          volumeMounts:
+            - name: {{ $svc.name }}-code
+              mountPath: /app
+            - name: {{ $svc.name }}-node-modules
+            {{- if $.Values.isNodeModules }}  
+            mountPath: /app/node_modules
+            {{- end }}
+          command: {{$svc.command}}
+
+          {{- end }}
+      {{- if $.Values.devMode }}
+      volumes:
+        - name: {{ $svc.name }}-code
+          hostPath:
+            path: ./{{ $svc.name }}
+            type: Directory
+        - name: {{ $svc.name }}-node-modules
+          emptyDir: {}
+      {{- end }}
+{{- end }}  
