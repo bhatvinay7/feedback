@@ -18,9 +18,9 @@ spec:
         image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:1.13.3
         args:
           - /nginx-ingress-controller
-          - --configmap=$(POD_NAMESPACE)/nginx-configuration
+          - --configmap=ingress-nginx/nginx-configuration
         env:
-          - name: POD_NAMESPACE
+          - name: ingress-nginx
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace

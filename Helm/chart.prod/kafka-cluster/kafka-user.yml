@@ -9,7 +9,6 @@ spec:
   authorization:
     type: simple
     acls:
-      # Define ACLs to grant permissions for the user
       - resource:
           type: topic
           name: 

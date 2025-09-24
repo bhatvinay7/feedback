@@ -23,7 +23,7 @@ spec:
   partitions: 1
   replicas: 2
   config:
-    segment.bytes: 1073741824 # 1 GB
+    segment.bytes: 1073741824 
 
 ---
 apiVersion: kafka.strimzi.io/v1beta2
@@ -37,4 +37,4 @@ spec:
   partitions: 1
   replicas: 2
   config:
-    segment.bytes: 1073741824 # 1 GB    
+    segment.bytes: 1073741824    

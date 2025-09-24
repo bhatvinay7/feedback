@@ -7,6 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/affinity: "cookie"
     nginx.ingress.kubernetes.io/session-cookie-name: "ws-session"
     nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
   - host: api.myapp.com
@@ -61,4 +62,8 @@ spec:
           service:
             name: kafka-consumer2
             port:
-              number: 8080                 
+              number: 8080   
+  tls :
+    - hosts:
+        -xyz.com
+      secretName : feedback-secret

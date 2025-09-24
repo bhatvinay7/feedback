@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{- range $key, $svc := .Values.services }}
 apiVersion: apps/v1
 kind: Deployment
@@ -24,3 +25,33 @@ spec:
                 name: {{ $svc.secretRef }}
 ---
 {{- end }}
+=======
+{{- range $key, $svc := .Values.services }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $.Chart.Name }}-{{ $svc.name }}
+  namespace: {{ $svc.namespace }}
+spec:
+  replicas: {{ $svc.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $svc.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $svc.name }}
+    spec:
+      containers:
+        - name: {{ $svc.name }}
+          image: {{ $svc.image }}
+          ports:
+            - containerPort: {{ $svc.targetPort }}
+          envFrom:
+            - secretRef:
+                name: {{ $svc.secretRef }}
+      imagePullSecrets:
+        - name: {{ svc.dockersecretRef }}          
+---
+{{- end }}
+>>>>>>> 6dd8cec1d03e4d04fe9f58844609b66162d9d637
