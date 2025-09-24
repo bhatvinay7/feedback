@@ -1,0 +1,20 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  name: controller
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: feedback-kafka-cluster
+spec:
+  replicas: 2
+  roles:
+    - controller
+  storage:  
+    type: jbod
+    volumes:
+      - id: 0
+        type: persistent-claim
+        size: 2Gi
+        class : fast-ssd
+        kraftMetadata: shared
+        deleteClaim: false

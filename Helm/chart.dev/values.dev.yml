@@ -1,0 +1,66 @@
+ service:
+  frontennd:
+    name: reach
+    replicas: 1
+    image: node:20
+    namespace: frontennd
+    port: 80
+    targetPort: 3000
+    secretRef: frontennd-secret
+    devMode: true
+    nodeport:  3000
+    isNodeModules : true
+    command: ["npm", "run", "dev"]
+
+  backend:
+    name: reach_backend
+    namespace: backend
+    replicas: 1
+    image: python:3.11-slim
+    port: 80
+    targetPort: 8000
+    secretRef: backend-secret
+    devMode: true
+    command: ["python", "main.py"]
+    isNodeModules : false
+    nodeport:  8000
+    
+
+  ws-server:
+    name: ws-server
+    namespace: ws-server
+    replicas: 1
+    image: node:20
+    port: 80
+    targetPort: 8080
+    secretRef: ws-server-secret
+    devMode: true
+    nodeport: 8080
+    isNodeModules : true
+    command: ["npm", "run", "dev"] 
+
+  kafka_consumer1:
+    name: kafka_consumer_1
+    namespace: kafka_consumer
+    replicas: 1
+    image: node:20
+    port: 80
+    targetPort: 3005
+    secretRef: kafka_consumer-secret
+    devMode: true
+    nodeport: 3005
+    isNodeModules : true
+    command: ["npm", "run", "dev"]
+
+  kafka_consumer2:
+    name: kafka_consumer_2
+    namespace: kafka_consumer
+    replicas: 1
+    image: node:20
+    port: 80
+    targetPort : 3004
+    secretRef: kafka_consumer-secret
+    devMode: true
+    isNodeModules : true
+    nodeport: 3004
+    command: ["npm", "run", "dev"]

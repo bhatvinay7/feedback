@@ -1,0 +1,40 @@
+# my-topics.yaml
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: my-topic
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: kafka-prod
+spec:
+  partitions: 1
+  replicas: 2
+  config:
+    retention.ms: 604800000
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: another-topic
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: kafka-prod
+spec:
+  partitions: 1
+  replicas: 2
+  config:
+    segment.bytes: 1073741824 
+
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: another-topic
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: kafka-prod
+spec:
+  partitions: 1
+  replicas: 2
+  config:
+    segment.bytes: 1073741824    

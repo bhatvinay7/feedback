@@ -1,0 +1,55 @@
+services:
+  frontend:
+    name: frontend
+    namespace: frontend
+    replicas: 3
+    image: frontend:latest
+    port: 80
+    targetPort: 3000
+    nodePort: 30080
+    secretRef: frontend-sealed-secret
+    dockersecretRef: docker-sealed-secret
+
+  backend:
+    name: backend
+    namespace: backend
+    replicas: 2
+    image: backend:latest
+    port: 80
+    targetPort: 8000
+    nodePort: 30081
+    secretRef: backend-sealed-secret
+    dockersecretRef: docker-sealed-secret
+
+  ws-server:
+    name: ws-server
+    namespace: ws-server
+    replicas: 1
+    image: ws-server:latest
+    port: 80
+    targetPort: 8080
+    nodePort: 30082
+    secretRef: ws-sealed-secret
+    dockersecretRef: docker-sealed-secret
+
+  kafka_consumer1:
+    name: kafka_consumer1
+    namespace: kafka_consumer
+    replicas: 1
+    image: kafka_consumer1:latest
+    port: 80
+    targetPort: 3005
+    nodePort: 30083
+    secretRef: kafka_consumer-sealed-secret
+    dockersecretRef: docker-sealed-secret
+
+  kafka_consumer2:
+    name: kafka_consumer2
+    namespace: kafka_consumer
+    replicas: 1
+    image: kafka_consumer2:latest
+    port: 80
+    targetPort: 3004
+    nodePort: 30084
+    secretRef: kafka_consumer-sealed-secret
+    dockersecretRef: docker-sealed-secret

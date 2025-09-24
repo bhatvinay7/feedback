@@ -1,0 +1,15 @@
+apiVersion: access.strimzi.io/v1alpha1
+kind: KafkaAccess
+metadata:
+  name: my-kafka-access-scram
+  namespace: kafka
+spec:
+  kafka:
+    name: feedback-kafka-cluster
+    namespace: kafka
+    listener: plain
+  user:
+    kind: KafkaUser
+    apiGroup: kafka.strimzi.io
+    name: Kafka-User
+    namespace: kafka

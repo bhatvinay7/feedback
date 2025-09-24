@@ -1,0 +1,18 @@
+{{- range $key, $svc := .Values.services }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $.Chart.Name }}-{{ $svc.name }}
+  namespace: {{ if $.Values.devMode }}dev{{ else }}{{ $svc.namespace }}{{ end }}
+spec:
+  type: {{ if $.Values.devMode }}NodePort{{ else }}ClusterIP{{end }}
+  selector:
+    app: {{ $svc.name }}
+  ports:
+    - port: {{ $svc.port }}
+      targetPort: {{ $svc.targetPort }}
+      {{- if $.Values.devMode }}
+      nodePort: {{ $svc.nodePort | default (add 30000 $svc.port) }}
+      {{- end }}
+---
+{{- end }}
