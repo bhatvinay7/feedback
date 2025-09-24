@@ -10,7 +10,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-  - host: api.myapp.com
+  - host: feedback-api.chatt.services
     http:
       paths:
       - path: /
@@ -19,9 +19,9 @@ spec:
           service:
             name: backend
             port:
-              number: 8080
+              number: 8000
 
-  - host: files.myapp.com
+  - host: feedback-web.chatt.services
     http:
       paths:
       - path: /
@@ -30,9 +30,9 @@ spec:
           service:
             name: frontend
             port:
-              number: 8080
+              number: 3000
 
-  - host: ws.myapp.com
+  - host: feedback-web.chatt.services
     http:
       paths:
       - path: /
@@ -43,27 +43,8 @@ spec:
             port:
               number: 8080
 
-  - host: ws.myapp.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kafka-consumer1
-            port:
-              number: 8080       
-  - host: ws.myapp.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kafka-consumer2
-            port:
-              number: 8080   
+ 
   tls :
     - hosts:
-        -xyz.com
+        - chatt.services
       secretName : feedback-secret
