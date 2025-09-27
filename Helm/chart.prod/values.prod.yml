@@ -3,24 +3,22 @@ services:
     name: frontend
     namespace: frontend
     replicas: 3
-    image: frontend:latest
+    image: reach-frontend:5b68550dd3d906c984bdb680a7072f0cc1fbb534
     port: 80
     targetPort: 3000
     nodePort: 30080
     secretRef: frontend-sealed-secret
     dockersecretRef: docker-sealed-secret
-
   backend:
     name: backend
     namespace: backend
     replicas: 2
-    image: backend:latest
+    image: reach-backend:5b68550dd3d906c984bdb680a7072f0cc1fbb534
     port: 80
     targetPort: 8000
     nodePort: 30081
     secretRef: backend-sealed-secret
     dockersecretRef: docker-sealed-secret
-
   ws-server:
     name: ws-server
     namespace: ws-server
@@ -31,7 +29,6 @@ services:
     nodePort: 30082
     secretRef: ws-sealed-secret
     dockersecretRef: docker-sealed-secret
-
   kafka_consumer1:
     name: kafka_consumer1
     namespace: kafka_consumer
@@ -42,7 +39,6 @@ services:
     nodePort: 30083
     secretRef: kafka_consumer-sealed-secret
     dockersecretRef: docker-sealed-secret
-
   kafka_consumer2:
     name: kafka_consumer2
     namespace: kafka_consumer
@@ -53,3 +49,6 @@ services:
     nodePort: 30084
     secretRef: kafka_consumer-sealed-secret
     dockersecretRef: docker-sealed-secret
+  ws-server.image: ws-server:5b68550dd3d906c984bdb680a7072f0cc1fbb534
+  kafka_consumer1.image: kafka_consumer1:5b68550dd3d906c984bdb680a7072f0cc1fbb534
+  kafka_consumer2.image: kafka_consumer2:5b68550dd3d906c984bdb680a7072f0cc1fbb534
