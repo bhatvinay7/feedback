@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: feedback-cluster-kafka
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: feedback-kafka-cluster
+    strimzi.io/kind: Kafka
+spec:
+  clusterIP: None
+  selector:
+    strimzi.io/cluster: feedback-kafka-cluster
+    strimzi.io/name: feedback-cluster-kafka
+  ports:
+    - name: broker
+      port: 9092
+      targetPort: 9092

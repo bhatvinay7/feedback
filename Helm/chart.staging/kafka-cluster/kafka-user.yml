@@ -1,0 +1,29 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: Kafka-User
+  namespace: kafka
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    type: simple
+    acls:
+      - resource:
+          type: topic
+          name: group-messages
+          patternType: literal
+        operations:
+          - Create
+          - Describe
+          - Write
+        host: "*"
+      - resource:
+          type: 
+          name: one-to-one-messages
+          patternType: literal
+        operations:
+          - Create
+          - Describe
+          - Write
+        host: "*"
