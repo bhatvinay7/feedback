@@ -1,7 +1,7 @@
 services:
   frontend:
     name: frontend
-    namespace: frontend
+    namespace: feedback
     replicas: 3
     image: frontend:latest
     port: 80
@@ -12,7 +12,7 @@ services:
 
   backend:
     name: backend
-    namespace: backend
+    namespace: feedback
     replicas: 2
     image: backend:latest
     port: 80
@@ -23,7 +23,7 @@ services:
 
   ws-server:
     name: ws-server
-    namespace: ws-server
+    namespace: feedback
     replicas: 1
     image: ws-server:latest
     port: 80
@@ -34,7 +34,7 @@ services:
 
   kafka_consumer1:
     name: kafka_consumer1
-    namespace: kafka_consumer
+    namespace: feedback
     replicas: 1
     image: kafka_consumer1:latest
     port: 80
@@ -45,7 +45,7 @@ services:
 
   kafka_consumer2:
     name: kafka_consumer2
-    namespace: kafka_consumer
+    namespace: feedback
     replicas: 1
     image: kafka_consumer2:latest
     port: 80

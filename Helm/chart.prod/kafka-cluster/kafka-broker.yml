@@ -4,7 +4,7 @@ metadata:
   name: broker
   namespace: kafka
   labels:
-    strimzi.io/cluster: feedback-kafka-cluster
+    strimzi.io/cluster: feedback-cluster
 spec:
   replicas: 2
   roles:

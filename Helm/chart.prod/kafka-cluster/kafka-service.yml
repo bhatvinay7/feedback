@@ -7,9 +7,9 @@ metadata:
     strimzi.io/cluster: feedback-kafka-cluster
     strimzi.io/kind: Kafka
 spec:
-  clusterIP: None             # headless service
+  clusterIP: None
   selector:
-    strimzi.io/cluster: feedback-cluster
+    strimzi.io/cluster: feedback-kafka-cluster
     strimzi.io/name: feedback-cluster-kafka
   ports:
     - name: broker

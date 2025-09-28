@@ -11,11 +11,19 @@ spec:
     acls:
       - resource:
           type: topic
-          name: 
+          name: group-messages
           patternType: literal
-        operation: Read
+        operations:
+          - Create
+          - Describe
+          - Write
+        host: "*"
       - resource:
-          type: topic
-          name: my-topic
+          type: 
+          name: one-to-one-messages
           patternType: literal
-        operation: Write
+        operations:
+          - Create
+          - Describe
+          - Write
+        host: "*"

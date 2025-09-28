@@ -1,24 +1,10 @@
-# my-topics.yaml
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: my-topic
+  name: group-messages
   namespace: kafka
   labels:
-    strimzi.io/cluster: kafka-prod
-spec:
-  partitions: 1
-  replicas: 2
-  config:
-    retention.ms: 604800000
----
-apiVersion: kafka.strimzi.io/v1beta2
-kind: KafkaTopic
-metadata:
-  name: another-topic
-  namespace: kafka
-  labels:
-    strimzi.io/cluster: kafka-prod
+    strimzi.io/cluster: feedback-cluster
 spec:
   partitions: 1
   replicas: 2
@@ -29,10 +15,10 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: another-topic
+  name: one-to-one-messages
   namespace: kafka
   labels:
-    strimzi.io/cluster: kafka-prod
+    strimzi.io/cluster: feedback-cluster
 spec:
   partitions: 1
   replicas: 2

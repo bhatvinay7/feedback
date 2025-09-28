@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: multi-subdomain-ingress
+  name: feedback-services
   annotations:
     nginx.ingress.kubernetes.io/websocket-services: "ws-server"
     nginx.ingress.kubernetes.io/affinity: "cookie"
