@@ -5,7 +5,7 @@ metadata:
   namespace: kafka
 spec:
   authentication:
-    type: none
+    type: plain
   authorization:
     type: simple
     acls:

@@ -16,7 +16,7 @@ spec:
         type: internal
         tls: false
         authentication:
-            type: none 
+            type: plain 
     template:
       pod:
         metadata:
