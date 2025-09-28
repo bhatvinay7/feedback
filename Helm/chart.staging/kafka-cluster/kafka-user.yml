@@ -1,11 +1,11 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaUser
 metadata:
-  name: Kafka-User
+  name: kafka-user-sealed-secret
   namespace: kafka
 spec:
   authentication:
-    type: scram-sha-512
+    type: none
   authorization:
     type: simple
     acls:

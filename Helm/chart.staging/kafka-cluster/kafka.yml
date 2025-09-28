@@ -16,7 +16,16 @@ spec:
         type: internal
         tls: false
         authentication:
-            type: scram-sha-512  
+            type: none 
+    template:
+      pod:
+        metadata:
+          labels:
+            app: kafka
+      service:
+        broker:
+          type: ClusterIP
+          clusterIP: None        
     config:
       offsets.topic.replication.factor: 2
       transaction.state.log.replication.factor: 1
