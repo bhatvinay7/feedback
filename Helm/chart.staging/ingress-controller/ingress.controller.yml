@@ -17,8 +17,9 @@ spec:
       - name: nginx-ingress
         image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:1.13.3
         args:
-          - /nginx-ingress-controller
-          - --configmap=ingress-nginx/nginx-configuration
+         - /nginx-ingress-controller
+         - --ingress-class=nginx
+         - --watch-namespace=feedback-services 
         env:
           - name: ingress-nginx
             valueFrom:
