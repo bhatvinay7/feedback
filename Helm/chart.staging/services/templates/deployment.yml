@@ -1,3 +1,4 @@
+{{- if .Values.services }}
 {{- range $key, $svc := .Values.services }}
 apiVersion: apps/v1
 kind: Deployment
@@ -17,13 +18,18 @@ spec:
       containers:
         - name: {{ $svc.name }}
           image: {{ $svc.image }}
-          imagePullPolicy: Always 
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ $svc.targetPort }}
+          {{- if $svc.secretRef }}
           envFrom:
             - secretRef:
                 name: {{ $svc.secretRef }}
+          {{- end }}
+      {{- if $svc.dockersecretRef }}
       imagePullSecrets:
-        - name: {{ $svc.dockersecretRef }}          
+        - name: {{ $svc.dockersecretRef }}
+      {{- end }}
 ---
+{{- end }}
 {{- end }}
