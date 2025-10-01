@@ -1,6 +1,5 @@
-services:
-  frontend:
-    name: frontend
+services:  
+  - name: frontend
     namespace: feedback-services
     replicas: 3
     image: bhatvinay7/reach-frontend:afee96341f508f832b3e8378d2831d63e4a4cb0c
@@ -9,8 +8,9 @@ services:
     nodePort: 30080
     secretRef: frontend-sealed-secret
     dockersecretRef: docker-sealed-secret
-  backend:
-    name: backend
+
+  
+  - name: backend
     namespace: feedback-services
     replicas: 2
     image: bhatvinay7/reach-backend:afee96341f508f832b3e8378d2831d63e4a4cb0c
@@ -19,8 +19,9 @@ services:
     nodePort: 30081
     secretRef: backend-sealed-secret
     dockersecretRef: docker-sealed-secret
-  ws-server:
-    name: ws-server
+
+  
+  - name: ws-server
     namespace: feedback-services
     replicas: 1
     image: bhatvinay7/ws-server:afee96341f508f832b3e8378d2831d63e4a4cb0c
@@ -29,8 +30,9 @@ services:
     nodePort: 30082
     secretRef: ws-sealed-secret
     dockersecretRef: docker-sealed-secret
-  kafka_consumer1:
-    name: kafka_consumer1
+
+  
+  - name: kafka_consumer1
     namespace: feedback-services
     replicas: 1
     image: bhatvinay7/kafka_consumer1:afee96341f508f832b3e8378d2831d63e4a4cb0c
@@ -39,8 +41,9 @@ services:
     nodePort: 30083
     secretRef: kafka_consumer-sealed-secret
     dockersecretRef: docker-sealed-secret
-  kafka_consumer2:
-    name: kafka_consumer2
+
+  
+  - name: kafka_consumer2
     namespace: feedback-services
     replicas: 1
     image: bhatvinay7/kafka_consumer2:afee96341f508f832b3e8378d2831d63e4a4cb0c
