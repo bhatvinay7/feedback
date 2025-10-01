@@ -3,7 +3,7 @@ services:
     name: frontend
     namespace: feedback
     replicas: 3
-    image: reach-frontend:d22bc9680c55849b52b0efc3a5c45c829d21248a
+    image: reach-frontend:67256498861b562982d4fbe8c2a8023c12a2ff68
     port: 80
     targetPort: 3000
     nodePort: 30080
@@ -13,7 +13,7 @@ services:
     name: backend
     namespace: feedback
     replicas: 2
-    image: reach-backend:d22bc9680c55849b52b0efc3a5c45c829d21248a
+    image: reach-backend:67256498861b562982d4fbe8c2a8023c12a2ff68
     port: 80
     targetPort: 8000
     nodePort: 30081
@@ -23,7 +23,7 @@ services:
     name: ws-server
     namespace: feedback
     replicas: 1
-    image: ws-server:d22bc9680c55849b52b0efc3a5c45c829d21248a
+    image: ws-server:67256498861b562982d4fbe8c2a8023c12a2ff68
     port: 80
     targetPort: 8080
     nodePort: 30082
@@ -33,7 +33,7 @@ services:
     name: kafka_consumer1
     namespace: feedback
     replicas: 1
-    image: kafka_consumer1:d22bc9680c55849b52b0efc3a5c45c829d21248a
+    image: kafka_consumer1:67256498861b562982d4fbe8c2a8023c12a2ff68
     port: 80
     targetPort: 3005
     nodePort: 30083
@@ -43,7 +43,7 @@ services:
     name: kafka_consumer2
     namespace: feedback
     replicas: 1
-    image: kafka_consumer2:d22bc9680c55849b52b0efc3a5c45c829d21248a
+    image: kafka_consumer2:67256498861b562982d4fbe8c2a8023c12a2ff68
     port: 80
     targetPort: 3004
     nodePort: 30084
