@@ -22,7 +22,7 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ $svc.secretRef }}
-      imagePullSecrets:
-        - name: {{ $svc.dockersecretRef }}          
+      {% comment %} imagePullSecrets:
+        - name: {{ $svc.dockersecretRef }}           {% endcomment %}
 ---
 {{- end }}
