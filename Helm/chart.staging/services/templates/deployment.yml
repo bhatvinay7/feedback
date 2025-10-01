@@ -17,6 +17,7 @@ spec:
       containers:
         - name: {{ $svc.name }}
           image: {{ $svc.image }}
+          imagePullPolicy: Always 
           ports:
             - containerPort: {{ $svc.targetPort }}
           envFrom:
