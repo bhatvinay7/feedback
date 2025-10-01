@@ -1,9 +1,9 @@
 services:
   frontend:
     name: frontend
-    namespace: feedback
+    namespace: feedback-services
     replicas: 3
-    image: bhatvinay7/reach-frontend:484d754b9c6746e9c1549239675f5eaad2b9ba1b
+    image: bhatvinay7/reach-frontend:afee96341f508f832b3e8378d2831d63e4a4cb0c
     port: 80
     targetPort: 3000
     nodePort: 30080
@@ -11,9 +11,9 @@ services:
     dockersecretRef: docker-sealed-secret
   backend:
     name: backend
-    namespace: feedback
+    namespace: feedback-services
     replicas: 2
-    image: bhatvinay7/reach-backend:484d754b9c6746e9c1549239675f5eaad2b9ba1b
+    image: bhatvinay7/reach-backend:afee96341f508f832b3e8378d2831d63e4a4cb0c
     port: 80
     targetPort: 8000
     nodePort: 30081
@@ -21,9 +21,9 @@ services:
     dockersecretRef: docker-sealed-secret
   ws-server:
     name: ws-server
-    namespace: feedback
+    namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/ws-server:484d754b9c6746e9c1549239675f5eaad2b9ba1b
+    image: bhatvinay7/ws-server:afee96341f508f832b3e8378d2831d63e4a4cb0c
     port: 80
     targetPort: 8080
     nodePort: 30082
@@ -31,9 +31,9 @@ services:
     dockersecretRef: docker-sealed-secret
   kafka_consumer1:
     name: kafka_consumer1
-    namespace: feedback
+    namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/kafka_consumer1:484d754b9c6746e9c1549239675f5eaad2b9ba1b
+    image: bhatvinay7/kafka_consumer1:afee96341f508f832b3e8378d2831d63e4a4cb0c
     port: 80
     targetPort: 3005
     nodePort: 30083
@@ -41,9 +41,9 @@ services:
     dockersecretRef: docker-sealed-secret
   kafka_consumer2:
     name: kafka_consumer2
-    namespace: feedback
+    namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/kafka_consumer2:484d754b9c6746e9c1549239675f5eaad2b9ba1b
+    image: bhatvinay7/kafka_consumer2:afee96341f508f832b3e8378d2831d63e4a4cb0c
     port: 80
     targetPort: 3004
     nodePort: 30084
