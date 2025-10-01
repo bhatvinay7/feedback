@@ -23,6 +23,6 @@ spec:
             - secretRef:
                 name: {{ $svc.secretRef }}
       imagePullSecrets:
-        - name: {{ svc.dockersecretRef }}          
+        - name: {{ $svc.dockersecretRef }}          
 ---
 {{- end }}

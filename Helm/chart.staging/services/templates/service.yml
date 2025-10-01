@@ -9,7 +9,7 @@ spec:
     app: {{ $svc.name }}
   ports:
     - protocol: TCP
-    - port: {{ $svc.port }}
+      port: {{ $svc.port }}
       targetPort: {{ $svc.targetPort }}
 ---
 {{- end }}
