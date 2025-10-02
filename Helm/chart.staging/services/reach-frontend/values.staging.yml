@@ -1,0 +1,10 @@
+services:  
+  - name: frontend
+    namespace: feedback-services
+    replicas: 3
+    image: bhatvinay7/reach-frontend:23a8a90cb9af2ea2af5fb20a2cd8bfe7bd280033
+    port: 80
+    targetPort: 3000
+    nodePort: 30080
+    secretRef: frontend-sealed-secret
+    dockersecretRef: docker-sealed-secret

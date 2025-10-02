@@ -1,0 +1,34 @@
+{{- if .Values.services }}
+{{- range $key, $svc := .Values.services }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $.Chart.Name }}-{{ $svc.name }}
+  namespace: {{ $svc.namespace }}
+spec:
+  replicas: {{ $svc.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $svc.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $svc.name }}
+    spec:
+      containers:
+        - name: {{ $svc.name }}
+          image: {{ $svc.image }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ $svc.targetPort }}
+          {{- if $svc.secretRef }}
+          envFrom:
+            - secretRef:
+                name: {{ $svc.secretRef }}
+          {{- end }}
+      {{- if $svc.dockersecretRef }}
+      imagePullSecrets:
+        - name: {{ $svc.dockersecretRef }}
+      {{- end }}
+{{- end }}
+{{- end }}

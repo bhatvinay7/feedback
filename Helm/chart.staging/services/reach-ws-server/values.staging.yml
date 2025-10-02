@@ -1,0 +1,10 @@
+services:  
+  - name: ws-server
+    namespace: feedback-services
+    replicas: 1
+    image: bhatvinay7/ws-server:23a8a90cb9af2ea2af5fb20a2cd8bfe7bd280033
+    port: 80
+    targetPort: 8080
+    nodePort: 30082
+    secretRef: ws-sealed-secret
+    dockersecretRef: docker-sealed-secret
