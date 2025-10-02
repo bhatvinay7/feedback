@@ -1,7 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: feedback-services
+  name: Ingress-config
+  namespace: feedback-services
   annotations:
     nginx.ingress.kubernetes.io/websocket-services: "ws-server"
     nginx.ingress.kubernetes.io/affinity: "cookie"
@@ -28,7 +29,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: frontend
+            name: reach-frontend
             port:
               number: 3000
 
@@ -39,7 +40,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: ws-server
+            name: reach-ws-server
             port:
               number: 8080
 
