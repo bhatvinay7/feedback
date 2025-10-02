@@ -8,3 +8,4 @@ resources:
   - kafka-access.yml
   - kafka-broker.yml
   - kafka-topics.yml
+  - kvp/fast-ssd-storageclass.yaml
