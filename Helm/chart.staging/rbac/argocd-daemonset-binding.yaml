@@ -1,12 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: argocd-daemonset-reader-binding
-subjects:
-- kind: ServiceAccount
-  name: argocd-application-controller
-  namespace: feedback
+  name: argocd-application-controller-binding
 roleRef:
-  kind: ClusterRole
-  name: argocd-daemonset-reader
   apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argocd-application-controller
+subjects:
+  - kind: ServiceAccount
+    name: argocd-application-controller
+    namespace: feedback
+
