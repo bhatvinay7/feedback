@@ -1,11 +1,39 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: argocd-daemonset-reader
+  name: argocd-application-controller
 rules:
-- apiGroups: ["apps"]
-  resources: ["daemonsets"]
-  verbs: ["get", "list", "watch"]
-- apiGroups: ["vpcresources.k8s.aws"]
-  resources: ["cninodes"]
-  verbs: ["get", "list", "watch"]
+  # Core resources (pods, services, secrets, configmaps, PVCs, etc.)
+  - apiGroups: [""]
+    resources: ["pods", "pods/log", "services", "endpoints", "secrets", "configmaps", "namespaces", "persistentvolumeclaims", "events", "serviceaccounts", "replicationcontrollers"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # Apps workloads (deployments, daemonsets, statefulsets, replicasets)
+  - apiGroups: ["apps"]
+    resources: ["deployments", "daemonsets", "statefulsets", "replicasets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # Batch jobs/cronjobs
+  - apiGroups: ["batch"]
+    resources: ["jobs", "cronjobs"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # Networking
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses", "networkpolicies"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # RBAC (needed for syncing roles/bindings sometimes)
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["roles", "rolebindings", "clusterroles", "clusterrolebindings"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # CRDs (if you deploy operators or custom resources)
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources: ["customresourcedefinitions"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # ArgoCD-specific resources (optional)
+  - apiGroups: ["argoproj.io"]
+    resources: ["applications", "appprojects", "applicationsets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
