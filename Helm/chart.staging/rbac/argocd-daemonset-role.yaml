@@ -6,3 +6,6 @@ rules:
 - apiGroups: ["apps"]
   resources: ["daemonsets"]
   verbs: ["get", "list", "watch"]
+- apiGroups: ["vpcresources.k8s.aws"]
+  resources: ["cninodes"]
+  verbs: ["get", "list", "watch"]
