@@ -30,6 +30,5 @@ spec:
       imagePullSecrets:
         - name: {{ $svc.dockersecretRef }}
       {{- end }}
----
 {{- end }}
 {{- end }}

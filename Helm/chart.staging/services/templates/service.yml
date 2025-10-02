@@ -11,5 +11,4 @@ spec:
     - protocol: TCP
       port: {{ $svc.port }}
       targetPort: {{ $svc.targetPort }}
----
 {{- end }}
