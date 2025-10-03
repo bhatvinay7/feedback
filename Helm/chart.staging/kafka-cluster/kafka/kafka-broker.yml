@@ -3,6 +3,8 @@ kind: KafkaNodePool
 metadata:
   name: broker
   namespace: kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
   labels:
     strimzi.io/cluster: feedback-cluster
 spec:

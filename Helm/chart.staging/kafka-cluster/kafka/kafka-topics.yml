@@ -3,6 +3,8 @@ kind: KafkaTopic
 metadata:
   name: group-messages
   namespace: kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
   labels:
     strimzi.io/cluster: feedback-cluster
 spec:

@@ -2,6 +2,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: fast-ssd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   namespace: kafka
 provisioner: kubernetes.io/aws-ebs
 parameters:

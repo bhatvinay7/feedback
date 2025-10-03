@@ -3,6 +3,8 @@ kind: KafkaAccess
 metadata:
   name: kafka-access
   namespace: kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   kafka:
     name: feedback-cluster-acces
