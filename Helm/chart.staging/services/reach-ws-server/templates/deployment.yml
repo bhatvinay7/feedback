@@ -21,11 +21,15 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ $svc.targetPort }}
-          {{- if $svc.secretRef }}
-          envFrom:
-            - secretRef:
-                name: {{ $svc.secretRef }}
-          {{- end }}
+          volumeMounts:
+            - name: env-volume
+              mountPath: /app/.env
+              subPath: .env
+      volumes:
+        - name: env-volume
+          secret:
+            secretName: {{$svc.secretRef}}
+
       {{- if $svc.dockersecretRef }}
       imagePullSecrets:
         - name: {{ $svc.dockersecretRef }}
