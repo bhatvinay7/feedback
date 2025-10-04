@@ -2,7 +2,7 @@ services:
   - name: frontend
     namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/reach-frontend:a2067d0c4711d56f8a9d0f3107972c5b79bc5f2f
+    image: bhatvinay7/reach-frontend:2ef07359d2d3ebfce5010eb9ffc3f1fd7dc2e1ea
     port: 80
     targetPort: 3000
     nodePort: 30080
