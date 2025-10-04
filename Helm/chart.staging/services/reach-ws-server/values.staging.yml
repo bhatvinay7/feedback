@@ -2,7 +2,7 @@ services:
   - name: ws-server
     namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/reach-ws-server:2ef07359d2d3ebfce5010eb9ffc3f1fd7dc2e1ea
+    image: bhatvinay7/reach-ws-server:a5a08b463574043447f4a77a12f0c33c9a137818
     port: 80
     targetPort: 8080
     nodePort: 30082
