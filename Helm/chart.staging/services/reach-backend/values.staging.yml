@@ -2,7 +2,7 @@ services:
   - name: backend
     namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/reach-backend:14459c6d40b2f3c39626ee0f1ee6291cff763cf1
+    image: bhatvinay7/reach-backend:a2067d0c4711d56f8a9d0f3107972c5b79bc5f2f
     port: 80
     targetPort: 8000
     nodePort: 30081
