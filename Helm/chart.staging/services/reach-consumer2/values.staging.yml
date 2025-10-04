@@ -2,7 +2,7 @@ services:
   - name: kafka_consumer2
     namespace: feedback-services
     replicas: 1
-    image: bhatvinay7/reach-consumer2:f2177008b8433d2cbaab9a15ecde2e74aa73a788
+    image: bhatvinay7/reach-consumer2:14459c6d40b2f3c39626ee0f1ee6291cff763cf1
     port: 80
     targetPort: 3004
     nodePort: 30084
